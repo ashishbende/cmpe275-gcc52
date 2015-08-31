@@ -43,7 +43,7 @@ read -n 1 -s
 
 # Note u can remove --disable-multilib option if you are running 64 bit system. Added this option to work on ec2
 
-../configure --prefix=/usr/local/gnu/gcc-5.2.0/  --disable-multilib --disable-werror --enable-checking=release --enable-languages=c,c++,fortran 
+../configure --prefix=/usr/local/gnu/gcc-5.2.0/  --disable-multilib --disable-werror --with-system-zlib --enable-checking=release --enable-languages=c,c++,fortran 
 
 printf "\n This may take a while. Go grab a coffee or take a nap :D"
 #NPROC=$(nproc)
