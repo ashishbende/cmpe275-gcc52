@@ -8,6 +8,7 @@
 # This script doesn't run testsuites from gcc package.
 #
 
+[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 if [ $EUID -ne 0 ]; then printf "\nPlease run this script as root\n"; exit 1; fi
 
 printf "\n\n ---- Adding ubuntu latest toolchain ppa ----\n"
@@ -39,7 +40,9 @@ printf "\n\n Now lets get ready for some serious cpu action \n"
 
 echo "press any key to continue ..."
 read -n 1 -s
-## Note u can remove --disable-multilib option if you are running 64 bit system. Added this option to work on ec2
+
+# Note u can remove --disable-multilib option if you are running 64 bit system. Added this option to work on ec2
+
 ../configure --prefix=/usr/local/gnu/gcc-5.2.0/  --disable-multilib --disable-werror --enable-checking=release --enable-languages=c,c++,fortran 
 
 printf "\n This may take a while. Go grab a coffee or take a nap :D"
