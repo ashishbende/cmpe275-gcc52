@@ -48,7 +48,8 @@ read -n 1 -s
 printf "\n This may take a while. Go grab a coffee or take a nap :D"
 #NPROC=$(nproc)
 read -n 1 -s
-make -j 4 #$NPROC
+
+ulimit -s 32768 && make -j 2 #$NPROC
 
 make install
 if [ $? -eq 1 ];then
