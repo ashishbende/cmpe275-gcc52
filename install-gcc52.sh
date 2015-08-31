@@ -52,10 +52,7 @@ read -n 1 -s
 ulimit -s 32768 && make -j 2 #$NPROC
 
 make install
-if [ $? -eq 1 ];then
-    printf " \n Sorry 'make' failed on this system \n."
-    exit 1
-else
+if [ $? -eq 0 ];then
     printf "\n\n Lets create link to run gcc-5.2 directly from terminal"
     printf "\n Use gcc-5.2,cpp-5.2 to run compiler"
 
@@ -64,5 +61,8 @@ else
     ln -sv /usr/local/gnu/gcc-5.2.0/bin/cpp /usr/bin/cpp-5.2
     ln -sv /usr/local/gnu/gcc-5.2.0/bin/c++ /usr/bin/c++-5.2
     printf "\n\n All Done!"
+else 
+    printf " \n Sorry 'make' failed on this system \n."
+    exit 1
 fi
 exit 0
